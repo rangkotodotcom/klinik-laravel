@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,14 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [AuthController::class, 'login']);
-Route::post('/auth/login', [AuthController::class, 'authenticate'])->middleware('guest');
+Route::get('/', [AuthController::class, 'login'])->name('login')->middleware('guest');
+Route::post('/auth/login', [AuthController::class, 'authenticate']);
 Route::post('/auth/logout', [AuthController::class, 'logout']);
 
 
 
-// Admin
-Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth');
+// Dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+
+// Profil
+Route::resource('profile', ProfileController::class)->middleware('auth');
 
 
 

@@ -14,7 +14,15 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        // return view index
+
+        $profil = Profile::latest('id')->first();
+
+        return view('dashboard.profile.index', [
+            'title'     => 'Profil | Klinik Gigi',
+            'active'    => true,
+            'profile'   => $profil
+        ]);
     }
 
     /**
@@ -35,7 +43,19 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Save new data
+
+        $rules = [
+            'name'      => 'required',
+            'address'   => 'required',
+            'phone'     => 'required'
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        Profile::create($validatedData);
+
+        return redirect('/profile')->with('success', 'Profile has been added');
     }
 
     /**
@@ -69,7 +89,21 @@ class ProfileController extends Controller
      */
     public function update(Request $request, Profile $profile)
     {
-        //
+        // save edit data
+
+
+        $rules = [
+            'name'      => 'required',
+            'address'   => 'required',
+            'phone'     => 'required'
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        Profile::where('id', $profile->id)
+            ->update($validatedData);
+
+        return redirect('/profile')->with('success', 'Profile has been updated');
     }
 
     /**

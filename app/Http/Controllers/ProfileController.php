@@ -19,9 +19,10 @@ class ProfileController extends Controller
         $profil = Profile::latest('id')->first();
 
         return view('dashboard.profile.index', [
-            'title'     => 'Profil | Klinik Gigi',
-            'active'    => true,
-            'profile'   => $profil
+            'title'         => 'Profil | Klinik Gigi',
+            'menu'          => 'profil',
+            'header_bar'    => 'Profil',
+            'profile'       => $profil
         ]);
     }
 

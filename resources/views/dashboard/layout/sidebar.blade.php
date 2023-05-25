@@ -3,14 +3,14 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link {{ $active ? '' : 'collapses' }}" href="/dashboard">
+            <a class="nav-link {{ $menu == 'dashboard' ? '' : 'collapsed' }}" href="/dashboard">
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
             </a>
         </li><!-- End Dashboard Nav -->
 
         <li class="nav-item">
-            <a class="nav-link  {{ $active ? '' : 'collapses' }}" href="/profile">
+            <a class="nav-link  {{ $menu == 'profil' ? '' : 'collapsed' }}" href="/profile">
                 <i class="bi bi-person"></i>
                 <span>Profil</span>
             </a>

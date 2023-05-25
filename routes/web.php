@@ -15,18 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('cooming');
-// });
-
 Route::get('/', [AuthController::class, 'login']);
-Route::post('/auth/login', [AuthController::class, 'authenticate']);
+Route::post('/auth/login', [AuthController::class, 'authenticate'])->middleware('guest');
 Route::post('/auth/logout', [AuthController::class, 'logout']);
 
 
 
 // Admin
-Route::get('dashboard', [DashboardController::class, 'index']);
+Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 
 

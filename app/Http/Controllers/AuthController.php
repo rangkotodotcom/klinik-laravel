@@ -18,7 +18,7 @@ class AuthController extends Controller
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
-            'username'  => ['required', 'email:dns'],
+            'email'     => ['required', 'email:dns'],
             'password'  => 'required|min:5|max:255',
         ]);
 

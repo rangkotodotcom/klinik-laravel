@@ -23,8 +23,8 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name'              => 'jamilur',
-            'email'             => 'softj4m98@gmail.com',
+            'name'              => 'admin',
+            'email'             => 'admin@gmail.com',
             'password'          => '$2y$10$Wk9QU4apn/k9REP/gmzrVeSy8qBqEy9OLDWd.87hC3m4yEaO5msk.', // 12345678
             'role'              => 1,
         ];

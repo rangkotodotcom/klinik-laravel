@@ -19,6 +19,7 @@ class CreateTreatmentsTable extends Migration
             $table->json('disease');
             $table->text('complain');
             $table->text('handling');
+            $table->float('bill');
             $table->timestamps();
         });
     }

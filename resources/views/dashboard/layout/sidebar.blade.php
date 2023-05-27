@@ -18,28 +18,20 @@
         <!-- End Profile Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#rm-nav" data-bs-toggle="collapse" href="#">
+            <a class="nav-link {{ $menu == 'patient' ? '' : 'collapsed' }}" data-bs-target="#rm-nav"
+                data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>Website</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="rm-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <ul id="rm-nav" class="nav-content collapse {{ $menu == 'patient' ? 'show' : '' }}"
+                data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="/patient">
+                    <a href="/patient" class="{{ $menu == 'patient' ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Pasien</span>
                     </a>
                 </li>
                 <li>
-                    <a href="components-accordion.html">
-                        <i class="bi bi-circle"></i><span>Accordion</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="components-badges.html">
-                        <i class="bi bi-circle"></i><span>Badges</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="components-breadcrumbs.html">
-                        <i class="bi bi-circle"></i><span>Breadcrumbs</span>
+                    <a href="/treatment">
+                        <i class="bi bi-circle"></i><span>Pengobatan</span>
                     </a>
                 </li>
             </ul>

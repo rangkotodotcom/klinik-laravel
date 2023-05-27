@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TreatmentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,11 +28,14 @@ Route::post('/auth/logout', [AuthController::class, 'logout']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 // Profil
-Route::resource('profile', ProfileController::class)->middleware('auth');
+Route::resource('/profile', ProfileController::class)->middleware('auth');
 
 
 // Pasien
-Route::resource('patient', PatientController::class)->middleware('auth');
+Route::resource('/patient', PatientController::class)->middleware('auth');
+
+// Pengobatan
+Route::resource('/treatment', TreatmentController::class)->middleware('auth');
 
 
 // Route Admin

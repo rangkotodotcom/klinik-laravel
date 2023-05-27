@@ -14,7 +14,16 @@ class PatientController extends Controller
      */
     public function index()
     {
-        //
+        // return view index
+
+        $pasien = Patient::all();
+
+        return view('dashboard.patient.index', [
+            'title'         => 'Pasien | Klinik Gigi',
+            'menu'          => 'patient',
+            'header_bar'    => 'Pasien',
+            'patient'       => $pasien
+        ]);
     }
 
     /**
@@ -24,7 +33,13 @@ class PatientController extends Controller
      */
     public function create()
     {
-        //
+        // return view create
+
+        return view('dashboard.patient.create', [
+            'title'         => 'Add Pasien | Klinik Gigi',
+            'menu'          => 'patient',
+            'header_bar'    => 'Pasien'
+        ]);
     }
 
     /**
@@ -35,7 +50,24 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // save new data
+
+        $rules = [
+            'name'          => 'required',
+            'age'           => 'required|numeric',
+            'gender'        => 'required',
+            'address'       => 'required',
+            'phone'         => 'required|numeric'
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        $validatedData['rm_number'] = time();
+
+
+        Patient::create($validatedData);
+
+        return redirect('/patient')->with('success', 'Patient has been added');
     }
 
     /**
@@ -46,7 +78,7 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        //
+        // return view show
     }
 
     /**
@@ -57,7 +89,14 @@ class PatientController extends Controller
      */
     public function edit(Patient $patient)
     {
-        //
+        // return view edit
+
+        return view('dashboard.patient.edit', [
+            'title'         => 'Edit Pasien | Klinik Gigi',
+            'menu'          => 'patient',
+            'header_bar'    => 'Pasien',
+            'patient'       => $patient
+        ]);
     }
 
     /**
@@ -69,7 +108,23 @@ class PatientController extends Controller
      */
     public function update(Request $request, Patient $patient)
     {
-        //
+        // update data
+
+        $rules = [
+            'name'          => 'required',
+            'age'           => 'required|numeric',
+            'gender'        => 'required',
+            'address'       => 'required',
+            'phone'         => 'required|numeric'
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        Patient::where('id', $patient->id)
+            ->update($validatedData);
+
+
+        return redirect('/patient')->with('success', 'Patient has been updated');
     }
 
     /**
@@ -80,6 +135,10 @@ class PatientController extends Controller
      */
     public function destroy(Patient $patient)
     {
-        //
+        // delete data
+
+        Patient::destroy($patient->id);
+
+        return redirect('/patient')->with('success', 'Patient has been deleted');
     }
 }

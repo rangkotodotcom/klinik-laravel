@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,9 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 // Profil
 Route::resource('profile', ProfileController::class)->middleware('auth');
 
+
+// Pasien
+Route::resource('patient', PatientController::class)->middleware('auth');
 
 
 // Route Admin
